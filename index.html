@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number guessing game</title>
+</head>
+<style>
+    body{
+        padding: 15%;
+    }
+    h1{
+        font-size: 40px;
+        width: 50%;
+    }
+    p{
+        width: 550px;
+    }
+    .content{
+        width: 50%;
+        margin: auto;
+    }
+    #feedback{
+        text-align: center;
+        padding: 5px;
+        width: 300px;
+    }
+</style>
+<body>
+    <div class="content">
+        <h1>GUESS THE <span style="color: blueviolet;">NUMBER</span>!</h1>
+        <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+        <p id="feedback"></p>
+        <div>
+            <label for="#number">
+                Enter a guess <input type="text" id="number"> <button id="submit">Submit guess</button>
+            </label>
+        </div>
+    </div>
+    <script>
+        let feedback= document.querySelector('#feedback');
+        let rnum=Math.floor(Math.random()*10 + 1);
+        // let rnum=1;
+        let i=0;
+        let guess=document.querySelector('#number');
+        let submit=document.querySelector('#submit');
+        function display(status){
+            if(status ===0){
+                feedback.textContent="Hurray! You got it right!";
+                feedback.style.backgroundColor='green';
+                feedback.style.color='white';
+            }
+            else if(status==1) {
+                feedback.textContent="Wrong! Too High!";
+                feedback.style.backgroundColor='red';
+                feedback.style.color='white';
+
+            }
+            else{
+                feedback.textContent = "Wrong! Too Low!";
+                feedback.style.backgroundColor='red';
+                feedback.style.color='white';
+            }
+        }
+        function checkGuess(){
+            userGuess = Number(guess.value);
+            if(userGuess===rnum){
+                display(0);
+                guess.value = '';
+                submit.disabled=true;
+                guess.disabled=true;
+            }
+            else if(userGuess>rnum){
+                display(1);
+                guess.value = '';
+                i++;
+            }
+            else{
+                display(2);
+                guess.value = '';
+                i++;
+            }
+            if(i===10){
+                feedback.textContent="You. Are. Done. 🤣🤣🤣🤣";
+                submit.disabled=true;
+                guess.disabled=true;
+            }          
+        }
+        submit.addEventListener('click',checkGuess);
+    </script>
+</body>
+</html>
