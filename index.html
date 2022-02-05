@@ -70,7 +70,7 @@
 <body>
     <div class="content">
         <h1>GUESS THE <span style="color: blueviolet;">NUMBER</span>!</h1>
-        <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+        <p>We have selected a random number between 1 and 100. See if you can guess it in 5 turns or fewer. We'll tell you if your guess was too high or too low.</p>
         <p id="feedback"></p>
         <div class="number">
             <label for="#number">
@@ -125,7 +125,7 @@
                 guess.value = '';
                 i++;
             }
-            if(i===10){
+            if(i===5){
                 feedback.textContent="You. Are. Done. 🤣🤣🤣🤣";
                 submit.disabled=true;
                 guess.disabled=true;
