@@ -16,7 +16,7 @@
     h1{
         font-size: 50px;
         width: 50%;
-        font-family: initial;
+        font-family: 'Times New Roman';
     }
     .content{
         padding:  2em;
@@ -42,6 +42,12 @@
     .number *{
         margin: .5em 0px;
         height: 25px;
+    }
+
+    #feedback{
+        text-align: center;
+        padding: 5px 10px;
+        width: 300px;
     }
 
     .btn{
@@ -73,11 +79,6 @@
             justify-content: left;
             margin-left: initial;
         }
-        #feedback{
-            text-align: center;
-            padding: 5px 10px;
-            width: 300px;
-        }
         #reset{
             margin-left: 13px;
         }
@@ -87,14 +88,14 @@
     <div class="content">
         <h1>GUESS THE <span style="color: blueviolet;">NUMBER</span>!</h1>
         <p>We have selected a random number between 1 and 100. See if you can guess it in 5 turns or fewer. We'll tell you if your guess was too high or too low.</p>
-        <p id="feedback"></p>
+        <p id="feedback" class=""></p>
         <div class="number">
             <label for="#number">
                 Enter a guess 
             </label>
             <input type="text" id="number"> 
             <button id="submit" class="btn">Submit guess</button>
-            <button id="reset" class="btn d-block">Reset</button>
+            <button id="reset" class="btn d-none">Reset</button>
         </div>
     </div>
     <script>
@@ -127,6 +128,8 @@
         }
         function checkGuess(){
             userGuess = Number(guess.value);
+            feedback.style.display='block';
+
             if(userGuess===rnum){
                 display(0);
                 guess.value = '';
@@ -151,10 +154,12 @@
             }          
         }
         function reset(){
-            rnum = Math.floor(Math.random()*100 + 1);
-            submit.disabled=false;
-            guess.disabled=false;
             i = 0;
+            rnum = Math.floor(Math.random()*100 + 1);
+            guess.disabled=false;
+            submit.disabled=false;
+            feedback.style.display='none';
+            this.classList.replace('d-block','d-none');
         }
         submit.addEventListener('click',checkGuess);
         reset_btn.addEventListener('click',reset);
