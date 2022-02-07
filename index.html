@@ -65,6 +65,12 @@
             padding: 5px 10px;
             width: 300px;
         }
+        .d-none{
+            display: none;
+        }
+        .d-block{
+            display: block;
+        }
     }
 </style>
 <body>
@@ -78,6 +84,7 @@
             </label>
             <input type="text" id="number"> 
             <button id="submit">Submit guess</button>
+            <button id="reset" class="d-none">Reset</button>
         </div>
     </div>
     <script>
@@ -86,6 +93,7 @@
         let i=0;
         let guess=document.querySelector('#number');
         let submit=document.querySelector('#submit');
+        let reset_btn=document.querySelector('#reset');
         function display(status){
             if(status ===0){
                 feedback.textContent="Hurray! You got it right!";
@@ -127,11 +135,19 @@
             }
             if(i===5){
                 feedback.textContent="You. Are. Done. 🤣🤣🤣🤣";
+                reset_btn.classList.replace('d-none','d-block');
                 submit.disabled=true;
                 guess.disabled=true;
             }          
         }
+        function reset(){
+            rnum = Math.floor(Math.random()*100 + 1);
+            submit.disabled=false;
+            guess.disabled=false;
+            i = 0;
+        }
         submit.addEventListener('click',checkGuess);
+        reset_btn.addEventListener('click',reset);
     </script>
 </body>
 </html>
