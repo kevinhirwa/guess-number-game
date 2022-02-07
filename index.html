@@ -25,6 +25,12 @@
     p{
         font-size: large;
     }
+    label{
+        text-align: right;
+    }
+    #number{
+        width: 205px;
+    }
     .number{
         width: 50%;
         display: flex;
@@ -37,9 +43,16 @@
         margin: .5em 0px;
         height: 25px;
     }
-    #submit{
+
+    .btn{
         display: block;
         width: 100px;
+    }
+    .d-none{
+        display: none;
+    }
+    .d-block{
+        display: block;
     }
     @media only screen and (min-width:700px) {
         body{
@@ -57,7 +70,7 @@
             margin: auto;
         }
         .number{
-            justify-content: space-between;
+            justify-content: left;
             margin-left: initial;
         }
         #feedback{
@@ -65,11 +78,8 @@
             padding: 5px 10px;
             width: 300px;
         }
-        .d-none{
-            display: none;
-        }
-        .d-block{
-            display: block;
+        #reset{
+            margin-left: 13px;
         }
     }
 </style>
@@ -83,8 +93,8 @@
                 Enter a guess 
             </label>
             <input type="text" id="number"> 
-            <button id="submit">Submit guess</button>
-            <button id="reset" class="d-none">Reset</button>
+            <button id="submit" class="btn">Submit guess</button>
+            <button id="reset" class="btn d-block">Reset</button>
         </div>
     </div>
     <script>
