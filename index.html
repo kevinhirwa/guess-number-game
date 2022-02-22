@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A number guessing game.">
     <title>Number guessing game</title>
 </head>
 <style>
     body
     {
-        display: flex;
+        display: flex; /* Center .content div */
         flex-direction: row;
         justify-content: center;
         align-items: center;
@@ -64,6 +65,7 @@
     }
 
     @media screen and (max-width:767px){
+        /* Add a little space between content and edges */
         .content {
             width: 90%;
             margin: auto;
@@ -104,11 +106,11 @@
     <script>
         let feedback= document.querySelector('#feedback');
         let rnum=Math.floor(Math.random()*100 + 1);
-        let i=0;
+        let i=0; // global to avoid endless playing - see checkGuess function. See line 154.
         let guess=document.querySelector('#number');
         let submit=document.querySelector('#submit');
         let reset_btn=document.querySelector('#reset');
-        function display(status){
+        function display(status){ // Help give feedback with status as input.
             if(status ===0){
                 feedback.textContent="Hurray! You got it right!";
                 feedback.style.backgroundColor='green';
@@ -129,7 +131,7 @@
                 feedback.style.padding='5px';
             }
         }
-        function checkGuess(){
+        function checkGuess(){ // Check guesses and terminate game.
             userGuess = Number(guess.value);
             feedback.style.display='block';
 
@@ -157,7 +159,7 @@
                 guess.disabled=true;
             }          
         }
-        function reset(){
+        function reset(){ // Reset game in case won or lost.
             i = 0;
             rnum = Math.floor(Math.random()*100 + 1);
             guess.disabled=false;
