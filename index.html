@@ -7,20 +7,22 @@
     <title>Number guessing game</title>
 </head>
 <style>
-    body{
-        background: linear-gradient(235deg,#000,#002) no-repeat;
+    body
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0%;
         color: #ddd;
-        height: fit-content;
         font-family: system-ui;
+        background: linear-gradient(235deg,#000,#002) no-repeat;
     }
     h1{
         font-size: 50px;
         width: 50%;
         font-family: 'Times New Roman';
-    }
-    .content{
-        padding:  2em;
-        height: 100%;
     }
     p{
         font-size: large;
@@ -60,20 +62,21 @@
     .d-block{
         display: block;
     }
-    @media only screen and (min-width:700px) {
-        body{
-            padding: 10%;
+
+    @media screen and (max-width:767px){
+        .content {
+            width: 90%;
+            margin: auto;
         }
+    }
+
+    @media screen and (min-width:768px) {
         h1{
             font-size: 40px;
             width: 50%;
         }
         p{
             width: 550px;
-        }
-        .content{
-            width: 50%;
-            margin: auto;
         }
         .number{
             justify-content: left;
